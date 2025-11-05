@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import React from "react";
-
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { Metadata } from "next";
 
 config.autoAddCss = false;
 
