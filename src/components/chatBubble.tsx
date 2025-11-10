@@ -3,6 +3,11 @@ import Image from "next/image";
 
 interface ChatBubbleProps {
   question: Question | undefined;
+  onAnswerClick?: (answer: {
+    score_field: string;
+    text: string;
+    value: number | null;
+  }) => void;
 }
 
 const ChatBubble = (props: ChatBubbleProps) => {
@@ -16,13 +21,22 @@ const ChatBubble = (props: ChatBubbleProps) => {
         <div className="flex flex-col w-full">
           <p className="mb-10">{props.question?.question}</p>
           <div className="border border-gg-pink w-full rounded">
-            {props.question?.answers.map((value, index, array) => {
+            {props.question?.answers?.map((value, index, array) => {
               return (
                 <a
                   className={`${index === array.length - 1 ? "" : "border-b"} cursor-pointer border-gg-pink min-h-20 flex items-center justify-center`}
                   key={index}
+                  onClick={() =>
+                    props.onAnswerClick &&
+                    props.onAnswerClick({
+                      ...value,
+                      score_field: props.question?.score_field || "",
+                    })
+                  }
                 >
-                  <p className="text-gg-pink text-center text-xl">{value}</p>
+                  <p className="text-gg-pink text-center text-xl">
+                    {value.text}
+                  </p>
                 </a>
               );
             })}

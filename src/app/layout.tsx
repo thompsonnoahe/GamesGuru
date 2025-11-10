@@ -4,6 +4,7 @@ import React from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 
 config.autoAddCss = false;
 
@@ -23,8 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${cairo.variable} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${cairo.variable} antialiased`}>
+        <ThemeProvider defaultTheme="dark" attribute="class">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

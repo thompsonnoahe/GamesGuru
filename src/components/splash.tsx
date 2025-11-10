@@ -13,7 +13,7 @@ export default function Splash() {
         Let&#39;s find something <span className="font-bold">awesome</span>.
       </h1>
       <button
-        onClick={() => router.push("/quiz")}
+        onClick={() => router.push("/quiz ")}
         className="cursor-pointer bg-background flex flex-row justify-between items-center rounded-xl px-5 py-2 uppercase text-2xl"
       >
         Take the Quiz
