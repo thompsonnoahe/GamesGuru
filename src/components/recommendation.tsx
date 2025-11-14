@@ -25,11 +25,10 @@ const Recommendation = (props: RecommendationProps) => {
       <div className="min-h-screen flex flex-col font-sans bg-background">
         <Header />
         <main className="flex flex-col flex-1 bg-linear-120 from-gg-red to-gg-yellow p-10">
-          <h1 className="font-extrabold mb-10 text-5xl text-center">
-            Your Recommendations 🎮
-          </h1>
           <div className="flex flex-col">
-            <h2 className="text-7xl">Oops! No recommendations 😭</h2>
+            <h1 className="text-5xl text-center">
+              Oops! No recommendations 😭
+            </h1>
           </div>
         </main>
       </div>

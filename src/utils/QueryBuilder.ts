@@ -1,4 +1,4 @@
-type MultiMap<T> = { [key: string]: T };
+export type MultiMap<T> = { [key: string]: T };
 
 export class QueryBuilder {
   private fields: MultiMap<number[]>;

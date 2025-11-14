@@ -1,19 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
-
-  console.log(theme);
-
   return (
     <header className="p-5 shadow-xl w-full sticky dark:bg-background">
-      <div className="flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center justify-center">
         <Link href="/">
           <div className="flex flex-row items-center cursor-pointer">
             <Image
@@ -30,15 +23,6 @@ export default function Header() {
             </div>
           </div>
         </Link>
-        <div className="flex flex-row items-center justify-between">
-          <FontAwesomeIcon
-            size="xl"
-            icon={theme === "light" ? faMoon : faSun}
-            className="cursor-pointer"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          />
-          <h1 className="text-2xl ml-7">Sign In</h1>
-        </div>
       </div>
     </header>
   );

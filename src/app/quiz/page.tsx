@@ -3,10 +3,12 @@
 import Header from "@/components/header";
 import ChatBubble from "@/components/chatBubble";
 import UserChatBubble from "@/components/userChatBubble";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Question } from "@/data/questions";
 import Recommendation from "@/components/recommendation";
-import { QueryBuilder } from "@/utils/QueryBuilder";
+import { MultiMap, QueryBuilder } from "@/utils/QueryBuilder";
+import { motion } from "motion/react";
+import Footer from "@/components/footer";
 
 interface ChatHistoryItem {
   question: Question | undefined;
@@ -18,6 +20,8 @@ const Quiz = () => {
   const [answer, setAnswer] = useState("");
   const [history, setHistory] = useState<ChatHistoryItem[]>([]);
   const [fields, setFields] = useState<MultiMap<number[]>>({});
+  const footer = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     fetch(`http://${process.env.NEXT_PUBLIC_API_URL}/questions?entry=true`)
       .then((res) => res.json())
@@ -47,7 +51,7 @@ const Quiz = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-background">
+    <div className="min-h-screen flex flex-col font-sans">
       <Header />
       <main className="flex flex-col flex-1 bg-linear-120 from-gg-red to-gg-yellow p-10">
         <div className="flex-row flex-1 justify-center">
@@ -61,7 +65,12 @@ const Quiz = () => {
               </div>
             </Fragment>
           ))}
-          <div className="flex mb-20">
+          <motion.div
+            className="flex mb-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <ChatBubble
               question={current}
               onAnswerClick={(a) => {
@@ -78,9 +87,10 @@ const Quiz = () => {
                 }
               }}
             />
-          </div>
+          </motion.div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
