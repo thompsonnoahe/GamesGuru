@@ -7,6 +7,7 @@ interface RecommendationProps {
 }
 
 const Recommendation = (props: RecommendationProps) => {
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   const [gameData, setGameData] = useState<any[]>([]);
   useEffect(() => {
     fetch(`http://${process.env.NEXT_PUBLIC_API_URL}/game`, {
