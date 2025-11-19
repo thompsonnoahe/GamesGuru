@@ -6,9 +6,17 @@ interface RecommendationProps {
   fields: string;
 }
 
+interface Game {
+  id: number;
+  cover: { image_id: string };
+  name: string;
+  summary: string;
+  total_rating: number;
+  websites: [{ id: number; url: string }];
+}
+
 const Recommendation = (props: RecommendationProps) => {
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
-  const [gameData, setGameData] = useState<any[]>([]);
+  const [gameData, setGameData] = useState<Game[]>([]);
   useEffect(() => {
     fetch(`http://${process.env.NEXT_PUBLIC_API_URL}/game`, {
       body: `fields *, cover.image_id, websites.url, websites.type; where ${props.fields} & total_rating >= 80; sort total_rating desc; limit 5;`,
