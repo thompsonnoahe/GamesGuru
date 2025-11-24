@@ -23,7 +23,7 @@ const Quiz = () => {
   const footer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch(`http://${process.env.NEXT_PUBLIC_API_URL}/questions?entry=true`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions?entry=true`)
       .then((res) => res.json())
       .then((q) => {
         setCurrent(q);
@@ -33,9 +33,7 @@ const Quiz = () => {
   useEffect(() => {
     if (!current) return;
 
-    fetch(
-      `http://${process.env.NEXT_PUBLIC_API_URL}/questions/${current?.next}`,
-    )
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions/${current?.next}`)
       .then((res) => {
         console.log(res);
         return res.json();

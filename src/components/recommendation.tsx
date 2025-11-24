@@ -18,7 +18,7 @@ interface Game {
 const Recommendation = (props: RecommendationProps) => {
   const [gameData, setGameData] = useState<Game[]>([]);
   useEffect(() => {
-    fetch(`http://${process.env.NEXT_PUBLIC_API_URL}/game`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/game`, {
       body: `fields *, cover.image_id, websites.url, websites.type; where ${props.fields} & total_rating >= 80; sort total_rating desc; limit 5;`,
       method: "POST",
     })
