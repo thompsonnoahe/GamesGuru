@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img width="1171" height="460" alt="image" src="https://github.com/user-attachments/assets/9a10157a-43e8-47c1-9b3f-08589a21fe4a" />
+
+A quiz-style web app for discovering awesome games! View it live here: https://thegames.guru
 
 ## Getting Started
 
